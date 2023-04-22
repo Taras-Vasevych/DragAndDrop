@@ -1,0 +1,124 @@
+@font-face {
+    font-family: 'Pacifico';
+    src: url('Pacifico-Regular.ttf');
+}
+
+:root {
+    --border-color: black;
+}
+
+*,
+*::before {    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all .07s;
+}
+
+body {
+    font-family: 'Pacifico', cursive;
+    margin: 0;
+}
+
+.draggableList {
+    margin: 3vh auto;
+    border: 0.3vh solid var(--border-color);
+    border-radius: 2vh;
+    list-style-type: none;
+    font-size: 3.6vh;
+    width: 75vw;
+    overflow: hidden; 
+}
+
+.draggableList li {
+    height: 7.9vh;
+    text-align: center;
+    background-color: lightcyan;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+ 
+.draggableList li:hover {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.draggableList li.correct {
+    background-color: hsl(120, 40%, 75%);
+}
+
+.draggableList li.incorrect {
+    background-color: hsl(0, 70%, 75%);
+}
+
+.draggableList li.over{
+    background-color: hsl(270, 50%, 65%);
+}
+
+.draggableList li:not(:last-of-type) {
+    border-bottom: 0.3vh solid var(--border-color);
+}
+
+
+.draggable {
+    cursor: pointer;
+}
+
+.check-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 0 4vh;    
+    height: 12vh;
+    min-width: 40%;
+    border: 0.3vh black solid;
+    border-radius: 2.5vh;
+    cursor: pointer;
+    background-color: hsl(181, 100%, 27%);
+    font-family: inherit;
+    color: white;
+    text-shadow: 0.7vh 0.7vh 0.3vh black;
+    font-weight: 800;
+    font-size: 5vh;
+
+}
+
+.check-btn:hover,
+.check-btn:focus
+ {
+    transform: scale(1.05);
+}
+
+.check-btn:active {
+    transform: scale(0.95);
+    background-color: hsl(181, 100%, 21%);
+}
+
+.check-btn p{
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.check-btn p::before
+ {
+    content: "";
+    width: 100%;
+    height: 0.2em;
+    border-radius: 0.1em;
+    position: absolute;
+    bottom: 0.1em;
+    background-color: currentColor;
+    box-shadow: 0.7vh 0.7vh 0.3vh black;
+    z-index: -1;
+    transform: scaleX(0);
+    transition: transform .2s ease-in;
+}
+
+.check-btn:hover p::before,
+.check-btn:focus p::before
+ {
+    transform: scaleX(1);
+}
